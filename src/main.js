@@ -265,47 +265,78 @@
  * スプレッド構文
  */
 
-//配列の展開
-const array1 = [1,2];
-console.log(array1);
-console.log(...array1); //配列を全て展開して表示
-//使用イメージ
-const sumFunc = (num1, num2) => console.log(num1 + num2);
-sumFunc(array1[0], array1[1]); // => 3
-sumFunc(...array1); // => 3
+// //配列の展開
+// const array1 = [1,2];
+// console.log(array1);
+// console.log(...array1); //配列を全て展開して表示
+// //使用イメージ
+// const sumFunc = (num1, num2) => console.log(num1 + num2);
+// sumFunc(array1[0], array1[1]); // => 3
+// sumFunc(...array1); // => 3
 
-// まとめる
-const array2 = [1, 2, 3, 4, 5];
-const [num1, num2, ...array3] = array2;
-// 0番目の要素はnum1、1番目の要素はnum2、それ以降はarray3にまとめうる。
-console.log(num1);
-console.log(num2);
-console.log(array3);
+// // まとめる
+// const array2 = [1, 2, 3, 4, 5];
+// const [num1, num2, ...array3] = array2;
+// // 0番目の要素はnum1、1番目の要素はnum2、それ以降はarray3にまとめうる。
+// console.log(num1);
+// console.log(num2);
+// console.log(array3);
 
-//配列のコピー、結合
-const array4 = [10, 20];
-const array5 = [30, 40];
-//array4をarray6にコピー
-const array6 = [...array4];
-console.log(array6); // [10, 20]
-//array4とarray5をarray7に結合する。
-const array7 = [...array4, ...array5];
-console.log(array7); // [10, 20, 30, 40]
-//コピーなら、単純にこれでいんじゃね？ 
-const array8 = array4;
-console.log(array8); // [10, 20]
-//このあと、array8を変更
-array8[0] = 100;
-console.log(array8); // [100, 20]
-//array4の参照を引き継いでいるため、バグ発生!!
-console.log(array4); // [100, 20]
-//スプレッド構文だと大丈夫なのか？
-const array9 = [...array5];
-console.log(array9); // [30, 40]
-//このあと、array9を変更
-array9[0] = 300;
-console.log(array9); // [300, 40]
-console.log(array5); // [30, 40]
+// //配列のコピー、結合
+// const array4 = [10, 20];
+// const array5 = [30, 40];
+// //array4をarray6にコピー
+// const array6 = [...array4];
+// console.log(array6); // [10, 20]
+// //array4とarray5をarray7に結合する。
+// const array7 = [...array4, ...array5];
+// console.log(array7); // [10, 20, 30, 40]
+// //コピーなら、単純にこれでいんじゃね？ 
+// const array8 = array4;
+// console.log(array8); // [10, 20]
+// //このあと、array8を変更
+// array8[0] = 100;
+// console.log(array8); // [100, 20]
+// //array4の参照を引き継いでいるため、バグ発生!!
+// console.log(array4); // [100, 20]
+// //スプレッド構文だと大丈夫なのか？
+// const array9 = [...array5];
+// console.log(array9); // [30, 40]
+// //このあと、array9を変更
+// array9[0] = 300;
+// console.log(array9); // [300, 40]
+// console.log(array5); // [30, 40]
 
 
+/**
+ * mapやfilterでの配列処理
+ */
 
+//map
+const nameArr = ["山田","太郎","佐藤"];
+//配列を順番に出力　（従来のやり方）
+for (let i = 0; i < nameArr.length; i ++) {
+  console.log(nameArr[i]);
+}
+//mapメソッドで簡単に繰り返し処理
+nameArr.map((name) => {console.log(name)});
+//順番も表示
+nameArr.map((name, index) => {console.log(`${index + 1}番目は${name}です`)});
+//mapメソッド内でreturnすることで、新規配列の生成も可能
+const nameArr2 = nameArr.map((name) => {
+  return name; //map は返した値を配列にできる。
+});
+console.log(nameArr2);
+//山田以外にさんをつけた配列を作成
+const nameArr3 = nameArr.map((name) => {
+  return name === "山田"? name : `${name}さん`;
+});
+console.log(nameArr3);
+
+//filter
+const numArr = [1,2,3,4,5];
+const newNumArr = numArr.filter((num) => {
+  // return の後に、返す条件を記載する。
+  return num % 2 === 1;
+})
+console.log(newNumArr); [1,3,5]
