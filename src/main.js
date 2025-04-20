@@ -344,17 +344,65 @@
 /**
  * 三項演算子
  */
-// 条件式? trueの場合の値 : falseの場合の値;
-const hoge = 1>2? "true":"false";
-console.log(hoge);
+// // 条件式? trueの場合の値 : falseの場合の値;
+// const hoge = 1>2? "true":"false";
+// console.log(hoge);
 
-const num = "1300";
-console.log(num.toLocaleString()); // 数値じゃ無いので整形できない。
-//数値じゃ無い場合、エラーメッセージを返すように三項演算子を使ってみる。
-const formattedNum = typeof num === "number" ? num.toLocaleString : "数値を設定してください";
-console.log(formattedNum); //数値を設定してください
+// const num = "1300";
+// console.log(num.toLocaleString()); // 数値じゃ無いので整形できない。
+// //数値じゃ無い場合、エラーメッセージを返すように三項演算子を使ってみる。
+// const formattedNum = typeof num === "number" ? num.toLocaleString : "数値を設定してください";
+// console.log(formattedNum); //数値を設定してください
 
-const checkSum = (num1, num2) => {
-  return num1 + num2 > 100 ? "100を超えています。":`許容範囲内です。値：${num1 + num2}`;
+// const checkSum = (num1, num2) => {
+//   return num1 + num2 > 100 ? "100を超えています。":`許容範囲内です。値：${num1 + num2}`;
+// }
+// console.log(checkSum(50,49));
+
+
+/**
+ * 論理演算子
+ */
+//truthy、falsyについて
+/**
+ * "ABC".    : true
+ * 0.        : false
+ * 10.       : true
+ * undefined : false
+ * null      : false
+ * false     : false 
+ * NaN       : false
+ * ""        : false
+ * []        : true
+ * {}        : true
+ */ 
+
+const val = null;
+if(val){
+  console.log("valはtruthyです。")
+}else{
+  console.log("valはfalsyです。")
 }
-console.log(checkSum(50,49));
+
+// 一般的な演算
+const flag1 = true;
+const flag2 = true;
+if(flag1 || flag2){
+  console.log("ok")
+}
+
+// 応用
+// '||' は左側がtruthyの場合、その時点で返却する。
+const num = 10;
+const fee = num || "金額未設定です";
+// ①numが 数値か？数値の場合、numを返す。
+// ②numが folsyの場合、"金額未設定です。"の文字列を返す。
+console.log(fee);
+
+// 応用
+// '&&' は左側がfolsyの場合、その時点で返却する。
+const num2 = null;
+const fee2 = num2 && "何かが設定されました";
+// ①numが folsyの場合、その値を返す。
+// ②numが truthyの場合、"何かが設定されました。"の文字列を返す。
+console.log(fee2);
