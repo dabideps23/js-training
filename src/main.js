@@ -152,27 +152,74 @@
 // console.log(message2);
 
 
-//配列の宣言
-const myProfile = ["ほげ", 25];
+// //配列の宣言
+// const myProfile = ["ほげ", 25];
 
-//メッセージ作成
-const message3 = `名前は${myProfile[0]}です。年齢は${myProfile[1]}歳です。`;
-console.log(message3);
+// //メッセージ作成
+// const message3 = `名前は${myProfile[0]}です。年齢は${myProfile[1]}歳です。`;
+// console.log(message3);
 
 
-// 毎回myProfile[n]って書くのだるいよね。わかりにくいし。
-const [nameZero, ageOne] = myProfile;
-// myProfile から、配列の位置の値を取得してる。なお命名は[]の中の変数になる。下記のようなイメージ
-// const nameZero = myProfile[0];
-// const ageOne = myProfile[1];
+// // 毎回myProfile[n]って書くのだるいよね。わかりにくいし。
+// const [nameZero, ageOne] = myProfile;
+// // myProfile から、配列の位置の値を取得してる。なお命名は[]の中の変数になる。下記のようなイメージ
+// // const nameZero = myProfile[0];
+// // const ageOne = myProfile[1];
 
-//メッセージ作成
-const message4 = `名前は${nameZero}です。年齢は${ageOne}歳です。`;
-console.log(message4);
+// //メッセージ作成
+// const message4 = `名前は${nameZero}です。年齢は${ageOne}歳です。`;
+// console.log(message4);
 
-//お試し、、ageだけ取りたい。
-const [, age2] = myProfile;
-console.log(age2);
-//お試し、、設定されていない場所を取ろうとすると、、？
-const [, , huga] = myProfile;
-console.log(huga); //undefined
+// //お試し、、ageだけ取りたい。
+// const [, age2] = myProfile;
+// console.log(age2);
+// //お試し、、設定されていない場所を取ろうとすると、、？
+// const [, , huga] = myProfile;
+// console.log(huga); //undefined
+
+
+/**
+ * デフォルト値（引数、分割代入）
+ */
+
+//関数の宣言
+const sayHello = (name) => console.log(`こんにちは！${name}さん`);
+
+//関数呼び出し
+sayHello("太郎"); //こんにちは！太郎さん
+
+//引数なしで関数呼び出し
+sayHello(); //こんにちは！undefinedさん
+
+//デフォルト引数ありの関数の宣言
+const sayHello2 = (name = "ゲスト") => console.log(`こんにちは！${name}さん`);
+
+//関数呼び出し
+sayHello2("太郎"); //こんにちは！太郎さん
+
+//引数なしで関数呼び出し
+sayHello2(); //こんにちは！ゲストさん
+
+
+const myProfile = {
+  age: 25
+}
+
+//分割代入
+const { age, name } = myProfile;
+//undefined
+console.log(name);
+//25
+console.log(age);
+
+
+const myProfile1 = {
+  age1: 25
+}
+
+//デフォルト引数ありの分割代入
+const { age1 = 0, name1 = "ゲスト" } = myProfile1;
+//ゲスト
+console.log(name1);
+//25
+console.log(age1);
