@@ -182,44 +182,80 @@
  * デフォルト値（引数、分割代入）
  */
 
-//関数の宣言
-const sayHello = (name) => console.log(`こんにちは！${name}さん`);
+// //関数の宣言
+// const sayHello = (name) => console.log(`こんにちは！${name}さん`);
 
-//関数呼び出し
-sayHello("太郎"); //こんにちは！太郎さん
+// //関数呼び出し
+// sayHello("太郎"); //こんにちは！太郎さん
 
-//引数なしで関数呼び出し
-sayHello(); //こんにちは！undefinedさん
+// //引数なしで関数呼び出し
+// sayHello(); //こんにちは！undefinedさん
 
-//デフォルト引数ありの関数の宣言
-const sayHello2 = (name = "ゲスト") => console.log(`こんにちは！${name}さん`);
+// //デフォルト引数ありの関数の宣言
+// const sayHello2 = (name = "ゲスト") => console.log(`こんにちは！${name}さん`);
 
-//関数呼び出し
-sayHello2("太郎"); //こんにちは！太郎さん
+// //関数呼び出し
+// sayHello2("太郎"); //こんにちは！太郎さん
 
-//引数なしで関数呼び出し
-sayHello2(); //こんにちは！ゲストさん
+// //引数なしで関数呼び出し
+// sayHello2(); //こんにちは！ゲストさん
 
 
+// const myProfile = {
+//   age: 25
+// }
+
+// //分割代入
+// const { age, name } = myProfile;
+// //undefined
+// console.log(name);
+// //25
+// console.log(age);
+
+
+// const myProfile1 = {
+//   age1: 25
+// }
+
+// //デフォルト引数ありの分割代入
+// const { age1 = 0, name1 = "ゲスト" } = myProfile1;
+// //ゲスト
+// console.log(name1);
+// //25
+// console.log(age1);
+
+
+/**
+ * オブジェクトの省略記法
+ */
+
+
+// 1.変数を用意
+const name = "太郎";
+const age = 25;
+
+// 2.変数を元にオブジェクトを用意
 const myProfile = {
-  age: 25
+  name: name,
+  age: age
 }
 
-//分割代入
-const { age, name } = myProfile;
-//undefined
-console.log(name);
-//25
-console.log(age);
+// 3.作成したオブジェクトを用意
+console.log(myProfile);
 
+// name:name とか書くの面倒だよね。
 
-const myProfile1 = {
-  age1: 25
+// 2.変数を元にオブジェクトを用意（省略記法）
+const myProfile2 = {
+  name,
+  age
 }
 
-//デフォルト引数ありの分割代入
-const { age1 = 0, name1 = "ゲスト" } = myProfile1;
-//ゲスト
-console.log(name1);
-//25
-console.log(age1);
+// 3.作成したオブジェクトを用意
+console.log(myProfile2);
+
+// お試し、こんな書き方もできそう（めちゃくちゃ分割代入とにてる、、、）
+const myProfile3 = { name, age };
+
+//分割代入はこれ。。
+// const {name, age} = myProfile3;
