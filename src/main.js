@@ -312,31 +312,49 @@
  * mapやfilterでの配列処理
  */
 
-//map
-const nameArr = ["山田","太郎","佐藤"];
-//配列を順番に出力　（従来のやり方）
-for (let i = 0; i < nameArr.length; i ++) {
-  console.log(nameArr[i]);
-}
-//mapメソッドで簡単に繰り返し処理
-nameArr.map((name) => {console.log(name)});
-//順番も表示
-nameArr.map((name, index) => {console.log(`${index + 1}番目は${name}です`)});
-//mapメソッド内でreturnすることで、新規配列の生成も可能
-const nameArr2 = nameArr.map((name) => {
-  return name; //map は返した値を配列にできる。
-});
-console.log(nameArr2);
-//山田以外にさんをつけた配列を作成
-const nameArr3 = nameArr.map((name) => {
-  return name === "山田"? name : `${name}さん`;
-});
-console.log(nameArr3);
+// //map
+// const nameArr = ["山田","太郎","佐藤"];
+// //配列を順番に出力　（従来のやり方）
+// for (let i = 0; i < nameArr.length; i ++) {
+//   console.log(nameArr[i]);
+// }
+// //mapメソッドで簡単に繰り返し処理
+// nameArr.map((name) => {console.log(name)});
+// //順番も表示
+// nameArr.map((name, index) => {console.log(`${index + 1}番目は${name}です`)});
+// //mapメソッド内でreturnすることで、新規配列の生成も可能
+// const nameArr2 = nameArr.map((name) => {
+//   return name; //map は返した値を配列にできる。
+// });
+// console.log(nameArr2);
+// //山田以外にさんをつけた配列を作成
+// const nameArr3 = nameArr.map((name) => {
+//   return name === "山田"? name : `${name}さん`;
+// });
+// console.log(nameArr3);
 
-//filter
-const numArr = [1,2,3,4,5];
-const newNumArr = numArr.filter((num) => {
-  // return の後に、返す条件を記載する。
-  return num % 2 === 1;
-})
-console.log(newNumArr); [1,3,5]
+// //filter
+// const numArr = [1,2,3,4,5];
+// const newNumArr = numArr.filter((num) => {
+//   // return の後に、返す条件を記載する。
+//   return num % 2 === 1;
+// })
+// console.log(newNumArr); [1,3,5]
+
+/**
+ * 三項演算子
+ */
+// 条件式? trueの場合の値 : falseの場合の値;
+const hoge = 1>2? "true":"false";
+console.log(hoge);
+
+const num = "1300";
+console.log(num.toLocaleString()); // 数値じゃ無いので整形できない。
+//数値じゃ無い場合、エラーメッセージを返すように三項演算子を使ってみる。
+const formattedNum = typeof num === "number" ? num.toLocaleString : "数値を設定してください";
+console.log(formattedNum); //数値を設定してください
+
+const checkSum = (num1, num2) => {
+  return num1 + num2 > 100 ? "100を超えています。":`許容範囲内です。値：${num1 + num2}`;
+}
+console.log(checkSum(50,49));
