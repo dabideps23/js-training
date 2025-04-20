@@ -131,22 +131,48 @@
  * 分割代入
  */
 
-//オブジェクト宣言
-const myProfile = {
-  name: "hoge",
-  age: 21
-};
+// //オブジェクト宣言
+// const myProfile = {
+//   name: "hoge",
+//   age: 21
+// };
+
+// //メッセージ作成
+// const message1 = `名前は${myProfile.name}です。年齢は${myProfile.age}歳です。`;
+// console.log(message1);
+
+// // 毎回myProfileって書くのだるいよね。
+// const {name, age} = myProfile;
+// // myProfile から、プロファイル名の変数を取得してる。下記のようなイメージ
+// // const name = myProfile.name;
+// // const age = myProfile.age;
+
+// //メッセージ作成
+// const message2 = `名前は${name}です。年齢は${age}歳です。`;
+// console.log(message2);
+
+
+//配列の宣言
+const myProfile = ["ほげ", 25];
 
 //メッセージ作成
-const message1 = `名前は${myProfile.name}です。年齢は${myProfile.age}歳です。`;
-console.log(message1);
+const message3 = `名前は${myProfile[0]}です。年齢は${myProfile[1]}歳です。`;
+console.log(message3);
 
-// 毎回myProfileって書くのだるいよね。
-const {name, age} = myProfile;
-// myProfile から、プロファイル名の変数を取得してる。下記のようなイメージ
-// const name = myProfile.name;
-// const age = myProfile.age;
+
+// 毎回myProfile[n]って書くのだるいよね。わかりにくいし。
+const [nameZero, ageOne] = myProfile;
+// myProfile から、配列の位置の値を取得してる。なお命名は[]の中の変数になる。下記のようなイメージ
+// const nameZero = myProfile[0];
+// const ageOne = myProfile[1];
 
 //メッセージ作成
-const message2 = `名前は${name}です。年齢は${age}歳です。`;
-console.log(message2);
+const message4 = `名前は${nameZero}です。年齢は${ageOne}歳です。`;
+console.log(message4);
+
+//お試し、、ageだけ取りたい。
+const [, age2] = myProfile;
+console.log(age2);
+//お試し、、設定されていない場所を取ろうとすると、、？
+const [, , huga] = myProfile;
+console.log(huga); //undefined
