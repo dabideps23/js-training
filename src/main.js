@@ -230,32 +230,82 @@
  */
 
 
-// 1.変数を用意
-const name = "太郎";
-const age = 25;
+// // 1.変数を用意
+// const name = "太郎";
+// const age = 25;
 
-// 2.変数を元にオブジェクトを用意
-const myProfile = {
-  name: name,
-  age: age
-}
+// // 2.変数を元にオブジェクトを用意
+// const myProfile = {
+//   name: name,
+//   age: age
+// }
 
-// 3.作成したオブジェクトを用意
-console.log(myProfile);
+// // 3.作成したオブジェクトを用意
+// console.log(myProfile);
 
-// name:name とか書くの面倒だよね。
+// // name:name とか書くの面倒だよね。
 
-// 2.変数を元にオブジェクトを用意（省略記法）
-const myProfile2 = {
-  name,
-  age
-}
+// // 2.変数を元にオブジェクトを用意（省略記法）
+// const myProfile2 = {
+//   name,
+//   age
+// }
 
-// 3.作成したオブジェクトを用意
-console.log(myProfile2);
+// // 3.作成したオブジェクトを用意
+// console.log(myProfile2);
 
-// お試し、こんな書き方もできそう（めちゃくちゃ分割代入とにてる、、、）
-const myProfile3 = { name, age };
+// // お試し、こんな書き方もできそう（めちゃくちゃ分割代入とにてる、、、）
+// const myProfile3 = { name, age };
 
-//分割代入はこれ。。
-// const {name, age} = myProfile3;
+// //分割代入はこれ。。
+// // const {name, age} = myProfile3;
+
+
+/**
+ * スプレッド構文
+ */
+
+//配列の展開
+const array1 = [1,2];
+console.log(array1);
+console.log(...array1); //配列を全て展開して表示
+//使用イメージ
+const sumFunc = (num1, num2) => console.log(num1 + num2);
+sumFunc(array1[0], array1[1]); // => 3
+sumFunc(...array1); // => 3
+
+// まとめる
+const array2 = [1, 2, 3, 4, 5];
+const [num1, num2, ...array3] = array2;
+// 0番目の要素はnum1、1番目の要素はnum2、それ以降はarray3にまとめうる。
+console.log(num1);
+console.log(num2);
+console.log(array3);
+
+//配列のコピー、結合
+const array4 = [10, 20];
+const array5 = [30, 40];
+//array4をarray6にコピー
+const array6 = [...array4];
+console.log(array6); // [10, 20]
+//array4とarray5をarray7に結合する。
+const array7 = [...array4, ...array5];
+console.log(array7); // [10, 20, 30, 40]
+//コピーなら、単純にこれでいんじゃね？ 
+const array8 = array4;
+console.log(array8); // [10, 20]
+//このあと、array8を変更
+array8[0] = 100;
+console.log(array8); // [100, 20]
+//array4の参照を引き継いでいるため、バグ発生!!
+console.log(array4); // [100, 20]
+//スプレッド構文だと大丈夫なのか？
+const array9 = [...array5];
+console.log(array9); // [30, 40]
+//このあと、array9を変更
+array9[0] = 300;
+console.log(array9); // [300, 40]
+console.log(array5); // [30, 40]
+
+
+
