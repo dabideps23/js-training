@@ -87,42 +87,66 @@
  * アロー関数
  */
 
-//従来の関数宣言（関数を作るのみ）
-function func1(str){
-  return str;
-}
-console.log(func1("ふぁんくわん！"));
+// //従来の関数宣言（関数を作るのみ）
+// function func1(str){
+//   return str;
+// }
+// console.log(func1("ふぁんくわん！"));
 
-//従来の関数宣言（関数を変数に格納）
-const func2 = function aaa(str){
-  return str + str;
-}
-console.log(func2("ふぁんくつー！"));
+// //従来の関数宣言（関数を変数に格納）
+// const func2 = function aaa(str){
+//   return str + str;
+// }
+// console.log(func2("ふぁんくつー！"));
 
-//アロー関数
-const func3 = (str) => {
-  return str + str + str;
-}
-console.log(func3("ふぁんくすりー！"));
+// //アロー関数
+// const func3 = (str) => {
+//   return str + str + str;
+// }
+// console.log(func3("ふぁんくすりー！"));
 
-//アロー関数（引数のカッコを省略）
-const func4 = str => {
-  return str + str + str + str;
-}
-console.log(func4("ふぁんくふぉー！"));
+// //アロー関数（引数のカッコを省略）
+// const func4 = str => {
+//   return str + str + str + str;
+// }
+// console.log(func4("ふぁんくふぉー！"));
 
-//アロー関数（処理のカッコと return を省略）
-const func5 = str => str + str + str + str + str;
-console.log(func5("ふぁんくふぁいぶ！"));
+// //アロー関数（処理のカッコと return を省略）
+// const func5 = str => str + str + str + str + str;
+// console.log(func5("ふぁんくふぁいぶ！"));
 
-//アロー関数練習
-const func6 = (num1, num2) => num1 + num2;
-console.log(func6(1,9));
-console.log(func6("1","9"));
+// //アロー関数練習
+// const func6 = (num1, num2) => num1 + num2;
+// console.log(func6(1,9));
+// console.log(func6("1","9"));
 
-//アロー関数練習（オブジェクト返却）
-const func7 = (num1, num2) => ({
-  hoge:num1,
-  huga:num2
-})
-console.log(func7(1,9));
+// //アロー関数練習（オブジェクト返却）
+// const func7 = (num1, num2) => ({
+//   hoge:num1,
+//   huga:num2
+// })
+// console.log(func7(1,9));
+
+/**
+ * 分割代入
+ */
+
+//オブジェクト宣言
+const myProfile = {
+  name: "hoge",
+  age: 21
+};
+
+//メッセージ作成
+const message1 = `名前は${myProfile.name}です。年齢は${myProfile.age}歳です。`;
+console.log(message1);
+
+// 毎回myProfileって書くのだるいよね。
+const {name, age} = myProfile;
+// myProfile から、プロファイル名の変数を取得してる。下記のようなイメージ
+// const name = myProfile.name;
+// const age = myProfile.age;
+
+//メッセージ作成
+const message2 = `名前は${name}です。年齢は${age}歳です。`;
+console.log(message2);
